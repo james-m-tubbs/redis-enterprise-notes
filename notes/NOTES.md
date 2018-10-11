@@ -186,3 +186,27 @@ Each cluster
 Monitoring Redis
 ===
 Things to consider: https://blog.serverdensity.com/monitor-redis/
+
+Clustering Options
+===
+## Active-Active Replica
+- 
+
+## Active-Read Replica
+- Ideal for LAN
+
+## High Availability
+- Shard Replication
+- Master + Read
+- If master dies failover happens to a read node
+- proxy tied to a specific node. A proxy can point to a different node in failover scenario
+- want to undo this - it chatty over the network
+- odd number of nodes
+
+proxy1 -> redis1
+proxy2 -> redis2
+
+- if proxy1 dies, proxy2 will rout to redis1 and redis2
+- if redis1 dies, proxy1 and proxy2 will rout to redis2
+- if proxy1 and redis1 go out (full node), failover entirely to node2
+
