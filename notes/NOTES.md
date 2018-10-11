@@ -210,3 +210,28 @@ proxy2 -> redis2
 - if redis1 dies, proxy1 and proxy2 will rout to redis2
 - if proxy1 and redis1 go out (full node), failover entirely to node2
 
+## Active-Active
+- Very complicated to make this work - years of academic research
+- Needed if failover happens when sessions are in use
+- Needed if failover between microservices with microdatabases
+- Distribute load across multiple servers
+
+There's a whitepaper on this, it uses vector clocks and documented rules and basically is super complicated
+
+Lua in Redis
+===
+## Created Lua in redis
+- Redis can have embedded functions (scripts) using Lua
+- Example at http://rosettacode.org
+- YOu can use Lua to export specific json attributes
+- scripts have a sha, you can use `SCRIPT LOAD` which returns it
+- then you can call `EVALSHA` 
+- Lua scripts are intended to be **pure functions**
+- can do some wild stuff with parameters
+
+Redis Modules
+===
+
+
+
+
