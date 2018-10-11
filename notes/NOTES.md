@@ -176,3 +176,13 @@ Redis Enterprise Cluster
 - each chart runs it's own process
 
 Tune keyspaces to remain on the same cluster
+
+Time for a Demo
+===
+memtier_benchmark: https://github.com/RedisLabs/memtier_benchmark
+- Hitting redis with a few options enabled - this seems like a useful tool for benchmarking
+Each cluster
+
+Monitoring Redis
+===
+Things to consider: https://blog.serverdensity.com/monitor-redis/
