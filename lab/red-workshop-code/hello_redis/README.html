@@ -1,0 +1,58 @@
+<h1 id="hands_on_session_hello_redis">Hands-On Session: Hello Redis</h1>
+
+<p>This directory contains files to use for the first hands-on exercise, building the classic 
+Hello World with a Redis twist.  In this session, you will create a Hello Redis program
+which connects to Redis, writes a message to the database, reads that message back, then
+displays the message to the end user.  After that you will modify the program to add a 
+counter to track the number of times the program executes.</p>
+
+<p>The files <code>hello_redis.py</code> is a skeleton program to get you started.  It provides and explains
+the boilerplate code needed to set up a connection to Redis.  If you get stuck <code>hello_redis_solution.py</code>
+implements a solution to the exercise.  Feel free to study it or get help from the training staff.</p>
+
+<p>Although this is a hands-on exercise, we want to encourage you to use this time to ask 
+questions of the training staff as well.</p>
+
+<h2 id="part_one_hello_redis">Part One: Hello Redis</h2>
+
+<h3 id="instructions">Instructions</h3>
+
+<ol>
+<li>Prior to modifying <code>hello_redis.py</code>, run the program and see what happens</li>
+<li>Add code to the program to store a Hello World message in Redis</li>
+<li>Modify the code that prints the message to read the message from Redis instead of a constant string</li>
+</ol>
+
+<h3 id="further_activities">Further Activities</h3>
+
+<ol>
+<li>Do you understand what the function of the <code>decode_response</code> flag?</li>
+<li>Try running the program with <code>decode_response=false</code>.  What happens?</li>
+</ol>
+
+<h2 id="part_two">Part Two:</h2>
+
+<h3 id="instructions">Instructions</h3>
+
+<ol>
+<li>Add code to <code>hello_redis.py</code> to track how often the program runs</li>
+<li>Uncomment the code to print the run count message and modify to use the value from Redis</li>
+</ol>
+
+<h3 id="further_activities">Further Activities</h3>
+
+<ol>
+<li>What happens if you and a classmate run your programs against the same database concurrently? Do you see any problems?</li>
+<li>Compare your solution with ours.  What differences, if any, do you notice? Are they meaningful?</li>
+</ol>
+
+<h2 id="part_three_optional_build_hello_redis_from_scratch">Part Three (Optional): Build Hello Redis From Scratch</h2>
+
+<p>After completing Part One and Part Two, if you still have time setup a development
+environment in a language other than Python that you are familiar with.  Download
+a community recommended Redis client and see if you can build the Hello Redis program
+from the previous parts from scratch in your chosen language.</p>
+
+<p>Please ask questions if you run into problems.  The training staff can help you with
+other languages they are familiar with and can help you find documentation and resources
+for languages they are not proficient in. </p>
