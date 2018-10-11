@@ -189,12 +189,6 @@ Things to consider: https://blog.serverdensity.com/monitor-redis/
 
 Clustering Options
 ===
-## Active-Active Replica
-- 
-
-## Active-Read Replica
-- Ideal for LAN
-
 ## High Availability
 - Shard Replication
 - Master + Read
@@ -202,6 +196,10 @@ Clustering Options
 - proxy tied to a specific node. A proxy can point to a different node in failover scenario
 - want to undo this - it chatty over the network
 - odd number of nodes
+
+
+## Active-Read Replica
+- Ideal for LAN
 
 proxy1 -> redis1
 proxy2 -> redis2
@@ -231,7 +229,71 @@ Lua in Redis
 
 Redis Modules
 ===
+## Strong JSON in redis
+- Serialized as a string
+- GET/SET operations
+- O(N) access
 
+## Deserialized as a hash
+- they you need to re-serialize it
 
+## RejSON Module!
+- JSON as native redis data type
+- key map to json values
+- stored as document tree
+- path access to json elements
+- can modify specific elements - fast!
+### Example
+- `JSON.SET json:scalar . '"Hello Json!"'`
+- `JSON.SET json:object . '{"userId":3001, "firstName":"james"}'`
+- `JSON.get json.object .userId`
+- `JSON.set json:object .userId 3002`
 
+There's a whole bunch of commands you can use
+
+## RediSearch
+
+But why tho
+- Full Text Search
+- Can do 3(+1) things
+- Search, Query, Aggregate, Autocomplete
+- Create a schema using four types
+-- text
+-- numeric
+-- tag
+-- geospacial
+- add documents in real time
+-- directly
+-- from hash
+-- index only
+
+### Query Lang
+- Goals
+-- Intentionally not SQL
+-- Simple
+-- Usable for end users
+
+Examples:
+
+- `ford truck`
+- `(chev*|ford) -explorer ~truck`
+- can use `AND`/`OR`/`NOT` plus a ton of other stuff, geospaical, nubmer ranges, optional terms, etc.
+
+### Aggregations
+- same lang as search
+- can group, sort, apply transforms
+- follows pipeline of composable actions
+
+- Combile REDUCERS and Manipulations
+Example:
+```
+FT.AGGREGATE shipments "@box_area:[300 + inf]"
+APPLY "year(@shipment_timestamp / 1000)" AS shipment_year
+GROUPBY 1 @shipment_year REDUCE COUNT 0 as shipment_count
+SORTBY 2 @shipment_count desc
+LIMIT 0 3
+APPLY "format(some some regex stuff)
+```
+
+### Autocomplete
 
