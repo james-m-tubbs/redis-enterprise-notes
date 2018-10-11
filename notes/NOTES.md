@@ -32,7 +32,9 @@ Problem:
 - `GET userid:1 -> "8754"`
 - `EXPIRE userid:1 60` (expire in 60s from now)
 - `DEL userid:1`
-- Eviction policy can delete records as default server policy
+
+Eviction policy can delete records as default server policy
+
 OR IN JAVA
 - `jedis.set("userid:1","8754")`
 - `jedis.get("userid:1")`
@@ -49,11 +51,13 @@ Ability to subscribe to certain keys, includes wildcards (so like `userid:*`?)
 `HMSET (has multiset)`
 `HMSET usersession:1 userid 8754 name dave ip 1.2.3.4:31 hits 1`
 
-this creates a hash with key usersession:1
-userid 8754
-name dave
-ip 1.2.3.4:31
-htis 2
+this creates a hash with key `usersession:1`
+|key|value|
+|---|---|
+|userid|8754|
+|name|dave|
+|ip|1.2.3.4:31|
+|hits|2|
 
 `HMGET usersession:1 userid name ip hits` (creates hash for ya)
 `HINCRBY usersession:1 hits 1` (instant incrememt of a value, super powerful!)
@@ -170,3 +174,5 @@ Redis Enterprise Cluster
 ## Scalability & Rebalancing
 - Database is sharded/scaled by cluster manager
 - each chart runs it's own process
+
+Tune keyspaces to remain on the same cluster
